@@ -1,0 +1,6 @@
+website1:
+  image: arehmandev/website1
+  ports:
+    - "1313:1313"
+  volumes:
+    - $PWD/site:/usr/share/blog

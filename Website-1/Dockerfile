@@ -23,8 +23,9 @@ EXPOSE 1313
 
 # Automatically build site
 ADD site/ /usr/share/blog
-RUN hugo -d /usr/share/nginx/html/
 
 # By default, serve site
 ENV HUGO_BASE_URL http://localhost:1313
-CMD hugo server -b ${HUGO_BASE_URL} --bind=0.0.0.0
+
+# Copying files on startup is done to allow docker-compose volumes to be used
+CMD hugo -d /usr/share/nginx/html/ && hugo server -b ${HUGO_BASE_URL} --bind=0.0.0.0
